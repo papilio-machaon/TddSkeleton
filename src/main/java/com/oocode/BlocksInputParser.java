@@ -9,6 +9,12 @@ public class BlocksInputParser {
         robot = r;
     }
 
+    public void parseCommands(String[] instructions)
+    {
+        for (String instruction: instructions) {
+            parse(instruction);
+        }
+    }
     public void parse(String s)
     {
         String[] inputValues = s.split(" ");

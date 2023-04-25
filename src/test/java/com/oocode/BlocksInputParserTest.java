@@ -52,6 +52,19 @@ public class BlocksInputParserTest {
         verify(robotInterface).setNumberOfBlocks(10);
     }
 
+    @Test
+    public void parserAllActions() {
+        Robot robotInterface = mock(Robot.class);
+        BlocksInputParser blockInputParser = new BlocksInputParser(robotInterface);
+        String[] input = new String[] {"10", "move 9 onto 1", "move 8 over 1", "pile 8 over 6", "pile 4 onto 5", "quit"};
+        blockInputParser.parseCommands(input);
+        verify(robotInterface).setNumberOfBlocks(10);
+        verify(robotInterface).moveOnto(9,1);
+        verify(robotInterface).moveOver(8,1);
+        verify(robotInterface).pileOver(8,6);
+        verify(robotInterface).pileOnto(4,5);
+        verify(robotInterface).quit();
+    }
 
 }
 
